@@ -1,17 +1,254 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/app.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UberX Travel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CSS/app.css">
 </head>
 <body>
-    <section id="splash">Splash</section>
-    <section id="home">Home</section>
-    <section id="travel">Travel</section>
-    <section id="booking">Booking</section>
-    <section id="payment">Payment</section>
-    <section id="receipt">Receipt</section>
+
+  <section id="splash">
+    <a href="#home" class="splash-link">
+      <img src="ASSETS/img/logouber.png" alt="UberX" class="splash-logo">
+      <span class="splash-hint">Toca para comenzar</span>
+    </a>
+  </section>
+
+  <section id="home">
+    <div class="screen">
+      <img src="ASSETS/img/logouber.png" alt="UberX" class="nav-logo">
+      <div class="home-body">
+        <span class="greeting-label">Bienvenido de nuevo</span>
+        <h1>¿A dónde<br>vamos hoy?</h1>
+        <p class="home-sub">Explora los mejores destinos del mundo con UberX Travel</p>
+      </div>
+      <div class="home-stats">
+        <div class="stat"><span class="stat-num">48</span><span class="stat-label">Destinos</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">4.9★</span><span class="stat-label">Valoración</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">12k</span><span class="stat-label">Viajeros</span></div>
+      </div>
+      <a href="#travel" class="btn btn-primary">Explorar destinos</a>
+    </div>
+  </section>
+
+  <section id="travel">
+    <div class="screen">
+      <header class="topbar">
+        <a href="#home" class="btn-back">&#8592;</a>
+        <h2>Destinos</h2>
+        <span></span>
+      </header>
+      <p class="section-sub">Selecciona tu próximo destino</p>
+
+      <div class="cards">
+        <div class="card">
+          <div class="card-img-wrap">
+            <img src="ASSETS/img/paris.jpg" alt="París">
+            <span class="card-badge">Europa</span>
+            <div class="card-overlay-info">
+              <h3>París</h3>
+              <p>La ciudad de la luz</p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="card-meta">
+              <span>Desde <strong>$850</strong></span>
+              <span class="card-dur">10h vuelo</span>
+            </div>
+            <a href="#booking" class="btn btn-card">Seleccionar</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-img-wrap">
+            <img src="ASSETS/img/newyork.webp" alt="Nueva York">
+            <span class="card-badge">América</span>
+            <div class="card-overlay-info">
+              <h3>Nueva York</h3>
+              <p>La ciudad que nunca duerme</p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="card-meta">
+              <span>Desde <strong>$620</strong></span>
+              <span class="card-dur">7h vuelo</span>
+            </div>
+            <a href="#booking" class="btn btn-card">Seleccionar</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="#home" class="btn btn-ghost">&#8592; Volver al inicio</a>
+    </div>
+  </section>
+
+
+  <section id="booking">
+    <div class="screen">
+      <header class="topbar">
+        <a href="#travel" class="btn-back">&#8592;</a>
+        <h2>Reserva</h2>
+        <span></span>
+      </header>
+
+      <div class="progress-bar">
+        <div class="step active"><span>1</span><label>Detalles</label></div>
+        <div class="step-line"></div>
+        <div class="step"><span>2</span><label>Pago</label></div>
+        <div class="step-line"></div>
+        <div class="step"><span>3</span><label>Listo</label></div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-group">
+          <label class="form-label">Destino</label>
+          <div class="input-display">&#128205; París, Francia</div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Salida</label>
+            <input type="date" class="input-field">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Vuelta</label>
+            <input type="date" class="input-field">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Pasajeros</label>
+          <select class="input-field">
+            <option>1 pasajero</option>
+            <option>2 pasajeros</option>
+            <option>3 pasajeros</option>
+            <option>4 o más</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Clase de vuelo</label>
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="clase" checked><span>Económica</span></label>
+            <label class="radio-option"><input type="radio" name="clase"><span>Ejecutiva</span></label>
+            <label class="radio-option"><input type="radio" name="clase"><span>Primera</span></label>
+          </div>
+        </div>
+      </div>
+
+      <a href="#payment" class="btn btn-primary">Continuar al pago</a>
+    </div>
+  </section>
+
+ 
+  <section id="payment">
+    <div class="screen">
+      <header class="topbar">
+        <a href="#booking" class="btn-back">&#8592;</a>
+        <h2>Pago</h2>
+        <span></span>
+      </header>
+
+      <div class="progress-bar">
+        <div class="step done"><span>&#10003;</span><label>Detalles</label></div>
+        <div class="step-line filled"></div>
+        <div class="step active"><span>2</span><label>Pago</label></div>
+        <div class="step-line"></div>
+        <div class="step"><span>3</span><label>Listo</label></div>
+      </div>
+
+      <div class="price-summary">
+        <div class="price-row"><span>Vuelo ida y vuelta</span><span>$850</span></div>
+        <div class="price-row"><span>Impuestos (15%)</span><span>$127</span></div>
+        <div class="price-row"><span>Seguro de viaje</span><span>$45</span></div>
+        <div class="price-total"><span>Total</span><span>$1,022</span></div>
+      </div>
+
+      <div class="form-card">
+        <p class="form-section-label">Método de pago</p>
+        <div class="payment-methods">
+          <label class="pay-method">
+            <input type="radio" name="pay" checked>
+            <span class="pay-icon">&#128179;</span>
+            <span>Crédito</span>
+          </label>
+          <label class="pay-method">
+            <input type="radio" name="pay">
+            <span class="pay-icon">&#128184;</span>
+            <span>Débito</span>
+          </label>
+          <label class="pay-method">
+            <input type="radio" name="pay">
+            <span class="pay-icon">&#128176;</span>
+            <span>Cripto</span>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Número de tarjeta</label>
+          <input type="text" class="input-field" placeholder="1234  5678  9012  3456">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Vencimiento</label>
+            <input type="text" class="input-field" placeholder="MM / AA">
+          </div>
+          <div class="form-group">
+            <label class="form-label">CVV</label>
+            <input type="text" class="input-field" placeholder="•••">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Nombre en la tarjeta</label>
+          <input type="text" class="input-field" placeholder="Como aparece en la tarjeta">
+        </div>
+      </div>
+
+      <a href="#receipt" class="btn btn-primary">Pagar $1,022</a>
+    </div>
+  </section>
+
+
+  <section id="receipt">
+    <div class="screen receipt-screen">
+      <div class="receipt-check">&#10003;</div>
+      <h2 class="receipt-title">¡Reserva<br>confirmada!</h2>
+      <p class="receipt-sub">Tu viaje fue reservado exitosamente. Recibirás los detalles en tu correo electrónico.</p>
+
+      <div class="ticket">
+        <div class="ticket-top">
+          <div class="ticket-city">
+            <span class="city-code">BOG</span>
+            <span class="city-name">Bogotá</span>
+          </div>
+          <div class="ticket-mid">
+            <span class="plane-icon">&#9992;</span>
+            <div class="flight-line"></div>
+          </div>
+          <div class="ticket-city align-right">
+            <span class="city-code">CDG</span>
+            <span class="city-name">París</span>
+          </div>
+        </div>
+        <div class="ticket-divider">
+          <div class="t-circle left"></div>
+          <div class="t-dashes"></div>
+          <div class="t-circle right"></div>
+        </div>
+        <div class="ticket-bottom">
+          <div class="tf"><span class="tf-label">Código</span><span class="tf-val">UBX-2026</span></div>
+          <div class="tf"><span class="tf-label">Fecha</span><span class="tf-val">Jun 15, 2026</span></div>
+          <div class="tf"><span class="tf-label">Clase</span><span class="tf-val">Económica</span></div>
+          <div class="tf"><span class="tf-label">Total</span><span class="tf-val accent">$1,022</span></div>
+        </div>
+      </div>
+
+      <a href="#home" class="btn btn-primary">Volver al inicio</a>
+      <a href="#travel" class="btn btn-ghost">Ver más destinos</a>
+    </div>
+  </section>
+
 </body>
 </html>
