@@ -26,7 +26,6 @@ body {
 
 a { text-decoration: none; color: inherit; }
 
-/* ── SPLASH ── */
 #splash {
   display: flex;
   justify-content: center;
@@ -60,7 +59,6 @@ a { text-decoration: none; color: inherit; }
   user-select: none;
 }
 
-/* ── HOME ── */
 #home {
   display: flex;
   flex-direction: column;
@@ -246,7 +244,6 @@ a { text-decoration: none; color: inherit; }
 .nav-item .nav-icon { font-size: 1.3rem; }
 .nav-divider { width: 1px; background: var(--border); margin: 12px 0; }
 
-/* ── TRAVEL / BOOKING ── */
 #travel, #booking {
   display: flex;
   flex-direction: column;
@@ -394,10 +391,11 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 14px 20px;
+  padding: 14px 17px;
   border-bottom: 1px solid var(--border);
+  border-left: 3px solid transparent;
   cursor: pointer;
-  transition: background var(--ease);
+  transition: background var(--ease), border-color var(--ease);
 }
 
 .ship-item:hover { background: rgba(255,255,255,0.03); }
@@ -437,7 +435,6 @@ a { text-decoration: none; color: inherit; }
   color: #fff;
 }
 
-/* Booking detail (pantalla 4) */
 .ship-detail {
   display: flex;
   flex-direction: column;
@@ -476,7 +473,6 @@ a { text-decoration: none; color: inherit; }
   text-align: center;
 }
 
-/* Bottom actions */
 .bottom-actions {
   padding: 16px 20px 32px;
   display: flex;
@@ -508,24 +504,22 @@ a { text-decoration: none; color: inherit; }
 
 .wallet-icon { font-size: 1.3rem; }
 
-.btn-swipe {
+.swipe-check { display: none; }
+
+.swipe-btn {
   display: flex;
   align-items: center;
   gap: 14px;
   background: var(--bg-card);
   border-radius: var(--rs);
   padding: 14px 18px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--muted);
   cursor: pointer;
-  transition: background var(--ease);
-  text-decoration: none;
+  transition: background 0.3s ease;
+  user-select: none;
+  position: relative;
 }
 
-.btn-swipe:hover { background: #1e2530; }
-
-.swipe-arrow {
+.swipe-thumb {
   width: 36px;
   height: 36px;
   background: rgba(255,255,255,0.1);
@@ -533,11 +527,64 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  font-size: 1.1rem;
   flex-shrink: 0;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
-/* ── PAYMENT METHODS ── */
+.swipe-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--muted);
+  flex: 1;
+  transition: opacity 0.3s ease;
+}
+
+.swipe-done {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0;
+  position: absolute;
+  left: 70px;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.swipe-link {
+  display: block;
+  text-align: center;
+  padding: 14px 18px;
+  background: var(--accent);
+  color: #000;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: var(--rs);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.swipe-check:checked + .swipe-btn {
+  background: rgba(240,165,0,0.12);
+}
+.swipe-check:checked + .swipe-btn .swipe-thumb {
+  background: var(--accent);
+  transform: translateX(6px);
+}
+.swipe-check:checked + .swipe-btn .swipe-label {
+  opacity: 0;
+}
+.swipe-check:checked + .swipe-btn .swipe-done {
+  opacity: 1;
+}
+.swipe-check:checked + .swipe-btn + .swipe-link {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
 #payment {
   display: flex;
   flex-direction: column;
@@ -597,8 +644,11 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 16px 0;
+  padding: 16px 0 16px 17px;
   border-bottom: 1px solid var(--border);
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  transition: background var(--ease), border-color var(--ease);
 }
 
 .pay-card-item:last-child { border-bottom: none; }
@@ -649,7 +699,7 @@ a { text-decoration: none; color: inherit; }
 .pay-card-actions .del:hover { color: #ff6b6b; }
 
 .btn-add {
-  margin: auto 20px 32px;
+  margin: auto 20px 12px;
   background: var(--bg-card);
   border-radius: var(--rs);
   padding: 16px;
@@ -663,7 +713,209 @@ a { text-decoration: none; color: inherit; }
 
 .btn-add:hover { background: var(--bg-surface); }
 
+.btn-confirm {
+  margin: 0 20px 32px;
+  background: var(--accent);
+  color: #000;
+  border-radius: var(--rs);
+  padding: 16px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: block;
+  transition: opacity var(--ease);
+}
+
+.btn-confirm:hover { opacity: 0.85; }
+
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+.splash-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.splash-wordmark {
+  animation: splashDrop 0.7s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+.splash-sub {
+  font-size: 0.9rem;
+  color: var(--muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  animation: splashDrop 0.7s 0.2s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+@keyframes splashDrop {
+  from { opacity: 0; transform: translateY(-24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.pressable {
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+.pressable:active {
+  transform: scale(0.93);
+  background: var(--bg-surface);
+}
+
+.search-bar {
+  cursor: text;
+  border: 1px solid transparent;
+  transition: border-color var(--ease);
+}
+.search-bar:focus-within {
+  border-color: var(--accent);
+}
+.search-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.95rem;
+  width: 160px;
+}
+.search-input::placeholder { color: var(--muted); }
+
+.nav-radio { display: none; }
+
+#nav-home:checked ~ label[for="nav-home"],
+#nav-viajes:checked ~ label[for="nav-viajes"] {
+  color: var(--text);
+}
+
+.ship-radio { display: none; }
+
+.ship-check {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1rem;
+  opacity: 0;
+  transition: opacity var(--ease);
+  flex-shrink: 0;
+}
+
+#ship-1:checked ~ label[for="ship-1"],
+#ship-2:checked ~ label[for="ship-2"],
+#ship-3:checked ~ label[for="ship-3"] {
+  background: rgba(240,165,0,0.07);
+  border-left-color: var(--accent);
+}
+
+#ship-1:checked ~ label[for="ship-1"] .ship-check,
+#ship-2:checked ~ label[for="ship-2"] .ship-check,
+#ship-3:checked ~ label[for="ship-3"] .ship-check {
+  opacity: 1;
+}
+
+.pay-radio { display: none; }
+
+.pay-selected-mark {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1rem;
+  opacity: 0;
+  transition: opacity var(--ease);
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+#pay-1:checked ~ label[for="pay-1"],
+#pay-2:checked ~ label[for="pay-2"],
+#pay-3:checked ~ label[for="pay-3"] {
+  background: rgba(240,165,0,0.07);
+  border-left-color: var(--accent);
+}
+
+#pay-1:checked ~ label[for="pay-1"] .pay-selected-mark,
+#pay-2:checked ~ label[for="pay-2"] .pay-selected-mark,
+#pay-3:checked ~ label[for="pay-3"] .pay-selected-mark {
+  opacity: 1;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 200;
+  backdrop-filter: blur(4px);
+}
+
+.modal-overlay:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-box {
+  background: var(--bg-surface);
+  border-radius: 20px 20px 0 0;
+  padding: 28px 20px 40px;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transform: translateY(40px);
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+}
+
+.modal-overlay:target .modal-box {
+  transform: translateY(0);
+}
+
+.modal-close {
+  align-self: flex-end;
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1;
+  transition: color var(--ease);
+}
+.modal-close:hover { color: var(--text); }
+
+.modal-box h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: -8px;
+}
+
+.modal-input {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--rs);
+  padding: 13px 14px;
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color var(--ease);
+  width: 100%;
+}
+.modal-input:focus { border-color: var(--accent); }
+
+.modal-row {
+  display: flex;
+  gap: 10px;
+}
+.modal-row .modal-input { flex: 1; }
+
+.receipt-check { animation: fadeUp 0.5s 0.1s both; }
+.receipt-title  { animation: fadeUp 0.5s 0.2s both; }
+.receipt-sub    { animation: fadeUp 0.5s 0.3s both; }
+.ticket         { animation: fadeUp 0.6s 0.4s cubic-bezier(0.22,1,0.36,1) both; }
+.btn.btn-primary { animation: fadeUp 0.5s 0.6s both; }
+.btn.btn-ghost   { animation: fadeUp 0.5s 0.75s both; }

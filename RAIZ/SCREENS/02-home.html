@@ -11,7 +11,7 @@
   <section id="home">
 
     <div class="home-header">
-      <div class="avatar">👨🚀</div>
+      <div class="avatar">👨‍🚀</div>
       <span>William Teig</span>
     </div>
 
@@ -20,59 +20,59 @@
         <h3>Siempre usa tu casco cuando viajes al espacio</h3>
         <a href="#">Sobre vuelos espaciales seguros &rsaquo;</a>
       </div>
-      <div class="banner-img">🧑🚀</div>
+      <div class="banner-img">🧑‍🚀</div>
     </div>
 
     <div class="categories">
-      <div class="cat-item">
+      <div class="cat-item pressable">
         <span class="cat-icon">🚀</span>
         <span>Viajar</span>
       </div>
-      <a href="03-travel.html" class="cat-item">
+      <a href="03-travel.html" class="cat-item pressable">
         <span class="cat-icon">🪐</span>
         <span>Explorar</span>
       </a>
-      <div class="cat-item">
+      <div class="cat-item pressable">
         <span class="cat-icon">📋</span>
         <span>Reservar</span>
       </div>
     </div>
 
-    <div class="search-bar">
+    <label class="search-bar" for="search-input">
       <div class="search-left">
         <span>🔍</span>
-        <span>¿A dónde vas?</span>
+        <input id="search-input" class="search-input" type="text" placeholder="¿A dónde vas?">
       </div>
       <div class="search-right">
         <span>🕐</span>
         <span>Ahora</span>
         <span>▾</span>
       </div>
-    </div>
+    </label>
 
     <div class="dest-list">
-      <a href="03-travel.html" class="dest-item">
+      <a href="03-travel-tierra.html" class="dest-item">
         <div class="dest-icon">🌍</div>
         <div class="dest-info">
           <h4>Tierra</h4>
           <p>Sistema Solar, Planeta 4</p>
         </div>
       </a>
-      <a href="03-travel.html" class="dest-item">
+      <a href="03-travel-marte.html" class="dest-item">
         <div class="dest-icon"><img src="../ASSETS/img/Marte.webp" alt="Marte"></div>
         <div class="dest-info">
           <h4>Marte</h4>
           <p>Sistema Solar, Planeta 5</p>
         </div>
       </a>
-      <a href="03-travel.html" class="dest-item">
+      <a href="03-travel-eei.html" class="dest-item">
         <div class="dest-icon">🛸</div>
         <div class="dest-info">
           <h4>Estación Espacial Internacional</h4>
           <p>Órbita Baja Terrestre</p>
         </div>
       </a>
-      <a href="03-travel.html" class="dest-item">
+      <a href="03-travel-luna.html" class="dest-item">
         <div class="dest-icon"><img src="../ASSETS/img/luna.jpg" alt="Luna"></div>
         <div class="dest-info">
           <h4>Luna</h4>
@@ -82,15 +82,18 @@
     </div>
 
     <nav class="bottom-nav">
-      <div class="nav-item active">
+      <input type="radio" name="nav" id="nav-home" class="nav-radio" checked>
+      <input type="radio" name="nav" id="nav-viajes" class="nav-radio">
+
+      <label for="nav-home" class="nav-item">
         <span class="nav-icon">🏠</span>
         <span>Inicio</span>
-      </div>
+      </label>
       <div class="nav-divider"></div>
-      <div class="nav-item">
+      <label for="nav-viajes" class="nav-item">
         <span class="nav-icon">🌐</span>
         <span>Viajes</span>
-      </div>
+      </label>
     </nav>
 
   </section>
