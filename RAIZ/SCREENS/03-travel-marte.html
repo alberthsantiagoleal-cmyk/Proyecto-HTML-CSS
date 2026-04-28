@@ -8,58 +8,90 @@
   <link rel="stylesheet" href="../CSS/app.css">
 </head>
 <body>
-  <section id="travel">
-    <div class="space-map">
-      <div class="space-map-bg"></div>
-      <div class="stars"></div>
-      <a href="02-home.html" class="map-back">&#8592;</a>
-      <div class="planet-mars">
-        <img src="../ASSETS/img/Marte.webp" alt="Marte" class="planet-img">
-        <div class="planet-label">Marte &rsaquo;</div>
+
+  <section id="travel"> <!-- Pantalla de exploración, el id activa los estilos de #travel en CSS -->
+
+    <div class="space-map"> <!-- Área superior que simula el mapa espacial con planetas -->
+      <div class="space-map-bg"></div> <!-- Capa de fondo negro con gradiente radial, simula el espacio -->
+      <div class="stars"></div> <!-- Capa de estrellas generadas con múltiples radial-gradient en CSS -->
+      <a href="02-home.html" class="map-back">&#8592;</a> <!-- Flecha de regreso a Home, &#8592; es el símbolo ← -->
+
+      <div class="planet-mars"> <!-- Contenedor del planeta destino (Marte), posicionado arriba a la derecha -->
+        <img src="../ASSETS/img/Marte.webp" alt="Marte" class="planet-img"> <!-- Imagen circular de Marte -->
+        <div class="planet-label">Marte &rsaquo;</div> <!-- Etiqueta con nombre del planeta, &rsaquo; es › -->
       </div>
-      <div class="orbit-path"></div>
-      <div class="planet-earth">
-        <img src="../ASSETS/img/luna.jpg" alt="Tierra" class="planet-img">
+
+      <div class="orbit-path"></div> <!-- Línea punteada elíptica que simula la órbita entre los dos planetas -->
+
+      <div class="planet-earth"> <!-- Contenedor del planeta origen, posicionado abajo a la izquierda -->
+        <img src="../ASSETS/img/luna.jpg" alt="Tierra" class="planet-img"> <!-- Imagen circular del planeta origen -->
         <div class="planet-label">Tierra &rsaquo;</div>
       </div>
     </div>
-    <div class="sheet">
-      <div class="sheet-handle"></div>
-      <p class="sheet-notice">Destino: <strong>Marte</strong> — Las tarifas son más altas por escombros espaciales</p>
-      <div class="ship-list">
-        <input type="radio" name="ship" id="ship-1" class="ship-radio" checked>
-        <label for="ship-1" class="ship-item">
-          <div class="ship-icon">🚀</div>
-          <div class="ship-info"><h4>Crew Dragon</h4><p>Próximo lanzamiento: 12/03/53, 19:30</p></div>
-          <div class="ship-price">48.5 <div class="coin">◎</div></div>
-          <span class="ship-check">✓</span>
+
+    <div class="sheet"> <!-- Panel inferior que se superpone sobre el mapa con bordes redondeados arriba -->
+      <div class="sheet-handle"></div> <!-- Barra gris pequeña decorativa que simula el handle de un bottom sheet -->
+      <p class="sheet-notice">Destino: <strong>Marte</strong> — Las tarifas son más altas por escombros espaciales</p> <!-- Aviso informativo del destino -->
+
+      <div class="ship-list"> <!-- Lista de naves disponibles para seleccionar -->
+
+        <!-- NAVE 1: el radio está oculto, el label es lo que el usuario ve y toca -->
+        <input type="radio" name="ship" id="ship-1" class="ship-radio" checked> <!-- Radio oculto, checked = seleccionado por defecto, name="ship" agrupa los 3 radios -->
+        <label for="ship-1" class="ship-item"> <!-- Al hacer clic aquí se marca ship-1, CSS resalta este label con borde dorado -->
+          <div class="ship-icon">🚀</div> <!-- Ícono de la nave -->
+          <div class="ship-info"> <!-- Columna de texto con nombre y fecha -->
+            <h4>Crew Dragon</h4>
+            <p>Próximo lanzamiento: 12/03/53, 19:30</p>
+          </div>
+          <div class="ship-price">48.5 <div class="coin">◎</div></div> <!-- Precio con el símbolo de crédito en círculo azul -->
+          <span class="ship-check">✓</span> <!-- Marca de selección, invisible por defecto, aparece cuando el radio está checked -->
         </label>
-        <input type="radio" name="ship" id="ship-2" class="ship-radio">
+
+        <!-- NAVE 2 -->
+        <input type="radio" name="ship" id="ship-2" class="ship-radio"> <!-- Radio oculto sin checked, no está seleccionado por defecto -->
         <label for="ship-2" class="ship-item">
           <div class="ship-icon">🛸</div>
-          <div class="ship-info"><h4>Starliner</h4><p>Próximo lanzamiento: 24/03/53, 12:30</p></div>
+          <div class="ship-info">
+            <h4>Starliner</h4>
+            <p>Próximo lanzamiento: 24/03/53, 12:30</p>
+          </div>
           <div class="ship-price">51.2 <div class="coin">◎</div></div>
           <span class="ship-check">✓</span>
         </label>
+
+        <!-- NAVE 3 -->
         <input type="radio" name="ship" id="ship-3" class="ship-radio">
         <label for="ship-3" class="ship-item">
           <div class="ship-icon">✈️</div>
-          <div class="ship-info"><h4>Dream Chaser</h4><p>Próximo lanzamiento: 24/03/53, 12:30</p></div>
+          <div class="ship-info">
+            <h4>Dream Chaser</h4>
+            <p>Próximo lanzamiento: 24/03/53, 12:30</p>
+          </div>
           <div class="ship-price">102.5 <div class="coin">◎</div></div>
           <span class="ship-check">✓</span>
         </label>
+
       </div>
-      <div class="bottom-actions">
-        <div class="btn-wallet">
-          <div class="btn-wallet-left"><span class="wallet-icon">❖</span><span>Conectar billetera</span></div>
-          <span>›</span>
+
+      <div class="bottom-actions"> <!-- Contenedor de los botones de acción al fondo del panel -->
+
+        <div class="btn-wallet"> <!-- Botón de conectar billetera digital -->
+          <div class="btn-wallet-left"> <!-- Lado izquierdo con ícono y texto -->
+            <span class="wallet-icon">❖</span> <!-- Ícono decorativo de billetera -->
+            <span>Conectar billetera</span>
+          </div>
+          <span>›</span> <!-- Flecha derecha indicando que hay más acción -->
         </div>
-        <a href="04-booking-marte.html" class="btn-swipe">
-          <div class="swipe-arrow">›</div>
+
+        <a href="04-booking-marte.html" class="btn-swipe"> <!-- Botón que navega a la pantalla de reserva de Marte -->
+          <div class="swipe-arrow">›</div> <!-- Flecha dentro del botón -->
           <span>Desliza para confirmar tu reserva</span>
         </a>
+
       </div>
     </div>
+
   </section>
+
 </body>
 </html>

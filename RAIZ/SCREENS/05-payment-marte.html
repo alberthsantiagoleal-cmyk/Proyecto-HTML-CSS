@@ -8,48 +8,82 @@
   <link rel="stylesheet" href="../CSS/app.css">
 </head>
 <body>
-  <section id="payment">
-    <div class="pay-header">
-      <a href="04-booking-marte.html" class="pay-back">&#8592;</a>
-      <h2>Métodos de Pago</h2>
+
+  <section id="payment"> <!-- Pantalla de métodos de pago, id activa estilos de #payment en CSS -->
+
+    <div class="pay-header"> <!-- Encabezado con flecha de regreso y título centrado -->
+      <a href="04-booking-marte.html" class="pay-back">&#8592;</a> <!-- Flecha que regresa a la reserva de Marte -->
+      <h2>Métodos de Pago</h2> <!-- Título centrado, el CSS usa margin-right para compensar la flecha y centrarlo visualmente -->
     </div>
-    <div class="pay-search"><span>🔍</span><span>Buscar métodos de pago</span></div>
-    <div class="pay-list">
-      <input type="radio" name="pay" id="pay-1" class="pay-radio" checked>
-      <label for="pay-1" class="pay-card-item">
-        <div class="pay-card-logo" style="background:#fff;"><span style="font-size:1.2rem;">🔴</span></div>
-        <div class="pay-card-info"><h4>**** **** **** 1234</h4><p>Vence 12/25</p></div>
-        <span class="badge-default">Predeterminada</span>
-        <span class="pay-selected-mark">✓</span>
+
+    <div class="pay-search"> <!-- Barra de búsqueda decorativa (no funcional en este prototipo) -->
+      <span>🔍</span>
+      <span>Buscar métodos de pago</span>
+    </div>
+
+    <div class="pay-list"> <!-- Lista de métodos de pago disponibles -->
+
+      <!-- MÉTODO 1: radio oculto + label visible, misma técnica que la selección de naves -->
+      <input type="radio" name="pay" id="pay-1" class="pay-radio" checked> <!-- Radio oculto, checked = seleccionado por defecto, name="pay" agrupa los 3 -->
+      <label for="pay-1" class="pay-card-item"> <!-- Al hacer clic se marca pay-1, CSS resalta con borde dorado izquierdo -->
+        <div class="pay-card-logo" style="background:#fff;"> <!-- Logo de la tarjeta con fondo blanco -->
+          <span style="font-size:1.2rem;">🔴</span> <!-- Ícono representando la tarjeta -->
+        </div>
+        <div class="pay-card-info"> <!-- Información de la tarjeta -->
+          <h4>**** **** **** 1234</h4> <!-- Número enmascarado de la tarjeta -->
+          <p>Vence 12/25</p> <!-- Fecha de vencimiento -->
+        </div>
+        <span class="badge-default">Predeterminada</span> <!-- Badge dorado que indica que es el método por defecto -->
+        <span class="pay-selected-mark">✓</span> <!-- Marca de selección, invisible por defecto, aparece con :checked -->
       </label>
+
+      <!-- MÉTODO 2 -->
       <input type="radio" name="pay" id="pay-2" class="pay-radio">
       <label for="pay-2" class="pay-card-item">
-        <div class="pay-card-logo" style="background:#3a4a5a;"><span style="font-size:0.7rem;color:#aaa;">TM</span></div>
-        <div class="pay-card-info"><h4>**** **** **** 5678</h4><p>Vence 01/26</p></div>
+        <div class="pay-card-logo" style="background:#3a4a5a;"> <!-- Fondo oscuro para esta tarjeta -->
+          <span style="font-size:0.7rem;color:#aaa;">TM</span> <!-- Iniciales de la tarjeta -->
+        </div>
+        <div class="pay-card-info">
+          <h4>**** **** **** 5678</h4>
+          <p>Vence 01/26</p>
+        </div>
         <span class="pay-selected-mark">✓</span>
       </label>
+
+      <!-- MÉTODO 3 -->
       <input type="radio" name="pay" id="pay-3" class="pay-radio">
       <label for="pay-3" class="pay-card-item">
-        <div class="pay-card-logo" style="background:#003087;"><span style="font-size:1rem;color:#fff;">P</span></div>
-        <div class="pay-card-info"><h4>PayPal</h4></div>
+        <div class="pay-card-logo" style="background:#003087;"> <!-- Fondo azul oscuro de PayPal -->
+          <span style="font-size:1rem;color:#fff;">P</span> <!-- Letra P de PayPal -->
+        </div>
+        <div class="pay-card-info">
+          <h4>PayPal</h4>
+        </div>
         <span class="pay-selected-mark">✓</span>
       </label>
+
     </div>
-    <a href="#modal-add" class="btn-add">Agregar nuevo método</a>
-    <a href="06-receipt-marte.html" class="btn-confirm">Confirmar pago</a>
-    <div id="modal-add" class="modal-overlay">
-      <div class="modal-box">
-        <a href="#" class="modal-close">✕</a>
+
+    <a href="#modal-add" class="btn-add">Agregar nuevo método</a> <!-- Al hacer clic agrega #modal-add a la URL, lo que activa :target en el modal -->
+    <a href="06-receipt-marte.html" class="btn-confirm">Confirmar pago</a> <!-- Botón dorado que navega al tiquete de confirmación de Marte -->
+
+    <!-- MODAL: invisible por defecto, se muestra cuando la URL tiene #modal-add gracias a :target en CSS -->
+    <div id="modal-add" class="modal-overlay"> <!-- Fondo oscuro semitransparente que cubre toda la pantalla -->
+      <div class="modal-box"> <!-- Panel blanco que sube desde abajo con animación -->
+        <a href="#" class="modal-close">✕</a> <!-- Botón de cerrar: href="#" limpia el hash de la URL, desactivando :target y cerrando el modal -->
         <h3>Nuevo método de pago</h3>
-        <input type="text" class="modal-input" placeholder="Número de tarjeta">
-        <div class="modal-row">
-          <input type="text" class="modal-input" placeholder="MM/AA">
-          <input type="text" class="modal-input" placeholder="CVV">
+
+        <input type="text" class="modal-input" placeholder="Número de tarjeta"> <!-- Campo de texto, el borde se vuelve dorado al enfocar con :focus en CSS -->
+        <div class="modal-row"> <!-- Fila con dos campos lado a lado -->
+          <input type="text" class="modal-input" placeholder="MM/AA"> <!-- Fecha de vencimiento -->
+          <input type="text" class="modal-input" placeholder="CVV"> <!-- Código de seguridad -->
         </div>
         <input type="text" class="modal-input" placeholder="Nombre en la tarjeta">
-        <a href="#" class="btn-confirm" style="margin:0;">Agregar tarjeta</a>
+        <a href="#" class="btn-confirm" style="margin:0;">Agregar tarjeta</a> <!-- Botón de confirmar dentro del modal, margin:0 sobreescribe el margen por defecto -->
       </div>
     </div>
+
   </section>
+
 </body>
 </html>

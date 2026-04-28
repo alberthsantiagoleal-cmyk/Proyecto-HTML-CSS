@@ -8,44 +8,58 @@
   <link rel="stylesheet" href="../CSS/app.css">
 </head>
 <body>
-  <section id="booking">
-    <div class="space-map">
-      <div class="space-map-bg"></div>
-      <div class="stars"></div>
-      <a href="03-travel-marte.html" class="map-back">&#8592;</a>
+
+  <section id="booking"> <!-- Pantalla de detalle de reserva, id activa estilos de #booking en CSS -->
+
+    <div class="space-map"> <!-- Mismo mapa espacial de la pantalla anterior, reutiliza los mismos estilos -->
+      <div class="space-map-bg"></div> <!-- Fondo negro del espacio -->
+      <div class="stars"></div> <!-- Estrellas generadas con CSS -->
+      <a href="03-travel-marte.html" class="map-back">&#8592;</a> <!-- Flecha que regresa a la pantalla de exploración de Marte -->
       <div class="planet-mars">
         <img src="../ASSETS/img/Marte.webp" alt="Marte" class="planet-img">
         <div class="planet-label">Marte &rsaquo;</div>
       </div>
-      <div class="orbit-path"></div>
+      <div class="orbit-path"></div> <!-- Línea punteada de la órbita -->
       <div class="planet-earth">
         <img src="../ASSETS/img/luna.jpg" alt="Tierra" class="planet-img">
         <div class="planet-label">Tierra &rsaquo;</div>
       </div>
     </div>
-    <div class="sheet">
-      <div class="sheet-handle"></div>
+
+    <div class="sheet"> <!-- Panel inferior con el detalle de la nave seleccionada -->
+      <div class="sheet-handle"></div> <!-- Handle decorativo del panel -->
       <p class="sheet-notice">Las tarifas son más altas por escombros espaciales</p>
-      <div class="ship-detail">
-        <div class="ship-detail-img">🚀</div>
-        <div class="ship-detail-name">Crew Dragon <span class="passengers">👤7</span></div>
-        <div class="ship-detail-price">48.5 <div class="coin">◎</div></div>
-        <p class="ship-detail-sub">Próximo lanzamiento: 12/03/53, 19:30<br>Duración del viaje: 18 días, 13 horas</p>
+
+      <div class="ship-detail"> <!-- Bloque central con información detallada de la nave elegida -->
+        <div class="ship-detail-img">🚀</div> <!-- Ícono grande de la nave -->
+        <div class="ship-detail-name">Crew Dragon <span class="passengers">👤7</span></div> <!-- Nombre + capacidad de pasajeros -->
+        <div class="ship-detail-price">48.5 <div class="coin">◎</div></div> <!-- Precio con símbolo de crédito -->
+        <p class="ship-detail-sub">Próximo lanzamiento: 12/03/53, 19:30<br>Duración del viaje: 18 días, 13 horas</p> <!-- Detalles del vuelo, <br> hace salto de línea -->
       </div>
-      <div class="bottom-actions">
-        <div class="btn-wallet">
-          <div class="btn-wallet-left"><span class="wallet-icon">❖</span><span>Conectar billetera</span></div>
+
+      <div class="bottom-actions"> <!-- Botones de acción al fondo -->
+
+        <div class="btn-wallet"> <!-- Botón de billetera, solo decorativo en este prototipo -->
+          <div class="btn-wallet-left">
+            <span class="wallet-icon">❖</span>
+            <span>Conectar billetera</span>
+          </div>
           <span>›</span>
         </div>
-        <input type="checkbox" id="swipe-check" class="swipe-check">
-        <label for="swipe-check" class="swipe-btn">
-          <span class="swipe-thumb">›</span>
-          <span class="swipe-label">Desliza para confirmar</span>
-          <span class="swipe-done">✓ Confirmado</span>
+
+        <!-- SWIPE DE CONFIRMACIÓN: funciona con checkbox + :checked en CSS, sin JavaScript -->
+        <input type="checkbox" id="swipe-check" class="swipe-check"> <!-- Checkbox invisible que guarda el estado (confirmado o no) -->
+        <label for="swipe-check" class="swipe-btn"> <!-- Al hacer clic aquí se marca el checkbox, CSS cambia el aspecto del botón -->
+          <span class="swipe-thumb">›</span> <!-- Flecha que se vuelve dorada cuando el checkbox está marcado -->
+          <span class="swipe-label">Desliza para confirmar</span> <!-- Texto que desaparece al confirmar -->
+          <span class="swipe-done">✓ Confirmado</span> <!-- Texto que aparece al confirmar, invisible por defecto -->
         </label>
-        <a href="05-payment-marte.html" class="swipe-link">Continuar al pago →</a>
+        <a href="05-payment-marte.html" class="swipe-link">Continuar al pago →</a> <!-- Botón dorado que aparece solo después de confirmar, invisible por defecto -->
+
       </div>
     </div>
+
   </section>
+
 </body>
 </html>

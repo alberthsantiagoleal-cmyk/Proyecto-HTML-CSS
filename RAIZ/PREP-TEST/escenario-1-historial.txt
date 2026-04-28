@@ -1,0 +1,98 @@
+================================================================
+ESCENARIO 1 — HISTORIAL DE VIAJES
+================================================================
+
+QUÉ ES:
+  Una pantalla nueva que muestra los viajes pasados del usuario
+  con destino, fecha, precio y estado (Completado / Cancelado).
+
+ARCHIVOS QUE TOCAS:
+  - Crear:   SCREENS/07-history.html
+  - Editar:  SCREENS/02-home.html  (enlazar desde el nav "Viajes")
+  - Editar:  CSS/app.css           (agregar estilos de #history si necesitas)
+
+----------------------------------------------------------------
+PASO 1 — Crear SCREENS/07-history.html
+----------------------------------------------------------------
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UberX - Historial</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/app.css">
+</head>
+<body>
+  <section id="history">
+
+    <div class="home-header">
+      <a href="02-home.html" class="pay-back">&#8592;</a>
+      <span>Historial de viajes</span>
+    </div>
+
+    <div class="dest-list">
+
+      <div class="dest-item">
+        <div class="dest-icon">🔴</div>
+        <div class="dest-info">
+          <h4>Bogotá → Marte</h4>
+          <p>12 Mar 2053 · 48.5 ◎ · Completado</p>
+        </div>
+      </div>
+
+      <div class="dest-item">
+        <div class="dest-icon">🟡</div>
+        <div class="dest-info">
+          <h4>Bogotá → Luna</h4>
+          <p>01 Feb 2053 · 22.0 ◎ · Completado</p>
+        </div>
+      </div>
+
+      <div class="dest-item">
+        <div class="dest-icon">🔵</div>
+        <div class="dest-info">
+          <h4>Bogotá → EEI</h4>
+          <p>15 Ene 2053 · 18.5 ◎ · Cancelado</p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+</body>
+</html>
+
+----------------------------------------------------------------
+PASO 2 — En 02-home.html, cambiar el label "Viajes" del nav
+----------------------------------------------------------------
+
+BUSCA esto:
+  <label for="nav-viajes" class="nav-item">
+    <span class="nav-icon">🌐</span>
+    <span>Viajes</span>
+  </label>
+
+REEMPLAZA por:
+  <a href="07-history.html" class="nav-item">
+    <span class="nav-icon">🌐</span>
+    <span>Viajes</span>
+  </a>
+
+----------------------------------------------------------------
+PASO 3 — En app.css agregar al final (solo si quieres estilos extra)
+----------------------------------------------------------------
+
+#history {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+================================================================
+TÉCNICA CSS USADA:
+  Ninguna nueva — reutiliza .dest-list y .dest-item que ya existen.
+  La pantalla hereda todo el diseño del proyecto automáticamente.
+================================================================

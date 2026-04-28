@@ -1,0 +1,77 @@
+================================================================
+ESCENARIO 7 — TOOLTIP DE INFORMACIÓN
+================================================================
+
+QUÉ ES:
+  Un pequeño globo de texto que aparece al pasar el cursor
+  (o mantener presionado en móvil) sobre un elemento.
+  Útil para explicar el precio, la duración del viaje, etc.
+  Se hace solo con CSS usando :hover.
+
+ARCHIVOS QUE TOCAS:
+  - Editar: SCREENS/04-booking-[destino].html  (agregar tooltip al precio)
+  - Editar: CSS/app.css                        (estilos del tooltip)
+
+----------------------------------------------------------------
+PASO 1 — En 04-booking-[destino].html, envolver el precio
+----------------------------------------------------------------
+
+BUSCA esto:
+  <div class="ship-detail-price">
+    48.5 <div class="coin">◎</div>
+  </div>
+
+REEMPLAZA por:
+  <div class="ship-detail-price tooltip-wrap">
+    48.5 <div class="coin">◎</div>
+    <span class="tooltip">Precio en créditos espaciales UBX</span>
+  </div>
+
+----------------------------------------------------------------
+PASO 2 — En app.css agregar al final
+----------------------------------------------------------------
+
+.tooltip-wrap {
+  position: relative;
+  cursor: help;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.75rem;
+  font-weight: 400;
+  padding: 6px 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--ease);
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--border);
+}
+
+.tooltip-wrap:hover .tooltip {
+  opacity: 1;
+}
+
+================================================================
+TÉCNICA CSS USADA:
+  :hover en el contenedor padre muestra el span hijo .tooltip
+  cambiando su opacity de 0 a 1.
+  El triángulo inferior del globo se hace con el truco de
+  border transparente en ::after (técnica clásica de CSS).
+================================================================
