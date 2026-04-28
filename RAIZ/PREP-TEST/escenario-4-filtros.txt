@@ -1,0 +1,66 @@
+================================================================
+ESCENARIO 4 — FILTRO DE NAVES POR PRECIO
+================================================================
+
+QUÉ ES:
+  En la pantalla de explorar (03-travel), agregar etiquetas
+  filtrables que resalten al seleccionarse. Usa la misma técnica
+  de input[type=checkbox] + :checked que ya tiene el proyecto.
+
+ARCHIVOS QUE TOCAS:
+  - Editar: SCREENS/03-travel-[destino].html  (agregar filtros)
+  - Editar: CSS/app.css                       (estilos de .filter-tag)
+
+----------------------------------------------------------------
+PASO 1 — En 03-travel-[destino].html, agregar filtros
+          justo después de <p class="sheet-notice">
+----------------------------------------------------------------
+
+AGREGA esto después del sheet-notice:
+
+  <div class="filter-bar">
+    <input type="checkbox" id="filter-eco" class="ship-radio">
+    <label for="filter-eco" class="filter-tag">Económico</label>
+
+    <input type="checkbox" id="filter-med" class="ship-radio">
+    <label for="filter-med" class="filter-tag">Estándar</label>
+
+    <input type="checkbox" id="filter-prem" class="ship-radio">
+    <label for="filter-prem" class="filter-tag">Premium</label>
+  </div>
+
+----------------------------------------------------------------
+PASO 2 — En app.css agregar al final
+----------------------------------------------------------------
+
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.filter-tag {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--bg-card);
+  font-size: 0.82rem;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  transition: background var(--ease), border-color var(--ease), color var(--ease);
+}
+
+#filter-eco:checked ~ label[for="filter-eco"],
+#filter-med:checked ~ label[for="filter-med"],
+#filter-prem:checked ~ label[for="filter-prem"] {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+}
+
+================================================================
+TÉCNICA CSS USADA:
+  input[type=checkbox] oculto (ya tiene display:none por .ship-radio)
+  + selector ~ para detectar :checked y cambiar el estilo del label.
+  Es exactamente la misma técnica que la selección de naves.
+================================================================

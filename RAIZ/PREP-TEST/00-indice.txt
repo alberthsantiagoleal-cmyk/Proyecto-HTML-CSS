@@ -1,0 +1,75 @@
+================================================================
+PREP-TEST — ÍNDICE GENERAL
+Proyecto: UberX — Viajes Interplanetarios
+================================================================
+
+Esta carpeta contiene 8 escenarios posibles para el test.
+Cada archivo tiene el código completo listo para copiar
+y pegar, con instrucciones de exactamente qué archivo
+tocar y en qué parte.
+
+----------------------------------------------------------------
+ARCHIVOS EN ESTA CARPETA
+----------------------------------------------------------------
+
+  escenario-1-historial.txt       → Pantalla de viajes pasados
+  escenario-2-perfil.txt          → Pantalla de datos del usuario
+  escenario-3-notificaciones.txt  → Pantalla de alertas del sistema
+  escenario-4-filtros.txt         → Filtros de naves por precio
+  escenario-5-modo-claro.txt      → Toggle de tema claro/oscuro
+  escenario-6-error.txt           → Pantalla de error de pago
+  escenario-7-tooltip.txt         → Globo de información al hacer hover
+  escenario-8-faq-acordeon.txt    → Preguntas frecuentes expandibles
+
+----------------------------------------------------------------
+RESUMEN RÁPIDO
+----------------------------------------------------------------
+
+  #  Escenario              Archivo nuevo            Técnica CSS
+  -  ---------              -------------            -----------
+  1  Historial de viajes    07-history.html          Reutiliza estilos
+  2  Perfil de usuario      07-profile.html          Reutiliza estilos
+  3  Notificaciones         07-notifications.html    Clase .notif-unread
+  4  Filtro de naves        (edita 03-travel)        :checked + ~
+  5  Modo claro/oscuro      (edita 02-home)          :checked + variables CSS
+  6  Pantalla de error      07-error.html            @keyframes fadeUp
+  7  Tooltip                (edita 04-booking)       :hover + opacity
+  8  FAQ acordeón           07-faq.html              :checked + max-height
+
+----------------------------------------------------------------
+REGLA GENERAL PARA CUALQUIER ESCENARIO
+----------------------------------------------------------------
+
+  1. Crear el HTML en SCREENS/ con la misma estructura base:
+       <!DOCTYPE html> + <head> con app.css + <section id="...">
+
+  2. Reutilizar las clases que ya existen:
+       .dest-list / .dest-item   → cualquier lista
+       .home-header              → encabezado con flecha atrás
+       .btn-confirm              → botón dorado de acción
+       .btn-add                  → botón secundario gris
+       .pay-back                 → flecha de regreso
+
+  3. Agregar los estilos nuevos AL FINAL de app.css,
+     nunca en medio del archivo.
+
+  4. Enlazar la pantalla nueva desde la pantalla que
+     tenga más sentido (home, nav, banner, etc.)
+
+----------------------------------------------------------------
+TÉCNICAS CSS DEL PROYECTO (para explicar en la sustentación)
+----------------------------------------------------------------
+
+  :active          → efecto press en categorías (scale)
+  :focus-within    → borde dorado en barra de búsqueda
+  :hover           → opacidad en listas, tooltips
+  :checked + ~     → selección de naves, métodos de pago,
+                     filtros, modo claro
+  :checked + +     → acordeón FAQ (hermano adyacente)
+  :target          → modal de agregar tarjeta
+  @keyframes       → animaciones splash (splashDrop)
+                     y receipt (fadeUp)
+  CSS variables    → sistema de diseño centralizado en :root
+  transition       → todas las animaciones de estado
+
+================================================================

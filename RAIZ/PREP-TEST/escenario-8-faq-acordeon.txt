@@ -1,0 +1,158 @@
+================================================================
+ESCENARIO 8 — ACORDEÓN DE PREGUNTAS FRECUENTES (FAQ)
+================================================================
+
+QUÉ ES:
+  Una pantalla con preguntas y respuestas que se expanden
+  al hacer clic. Cada pregunta es un label, cada respuesta
+  se muestra/oculta con un checkbox + :checked.
+
+ARCHIVOS QUE TOCAS:
+  - Crear:  SCREENS/07-faq.html
+  - Editar: SCREENS/02-home.html  (enlazar desde el banner)
+  - Editar: CSS/app.css           (estilos del acordeón)
+
+----------------------------------------------------------------
+PASO 1 — Crear SCREENS/07-faq.html
+----------------------------------------------------------------
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UberX - FAQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/app.css">
+</head>
+<body>
+  <section id="faq">
+
+    <div class="home-header">
+      <a href="02-home.html" class="pay-back">&#8592;</a>
+      <span>Preguntas frecuentes</span>
+    </div>
+
+    <div class="faq-list">
+
+      <input type="checkbox" id="faq-1" class="faq-check">
+      <label for="faq-1" class="faq-question">
+        ¿Qué incluye el precio del viaje?
+        <span class="faq-arrow">›</span>
+      </label>
+      <div class="faq-answer">
+        El precio incluye el trayecto en la nave seleccionada,
+        seguro espacial básico y 20kg de equipaje. Comidas y
+        traje espacial son opcionales.
+      </div>
+
+      <input type="checkbox" id="faq-2" class="faq-check">
+      <label for="faq-2" class="faq-question">
+        ¿Puedo cancelar mi reserva?
+        <span class="faq-arrow">›</span>
+      </label>
+      <div class="faq-answer">
+        Puedes cancelar hasta 72 horas antes del lanzamiento
+        con reembolso completo. Cancelaciones posteriores
+        tienen un cargo del 30%.
+      </div>
+
+      <input type="checkbox" id="faq-3" class="faq-check">
+      <label for="faq-3" class="faq-question">
+        ¿Qué son los créditos ◎?
+        <span class="faq-arrow">›</span>
+      </label>
+      <div class="faq-answer">
+        Los créditos UBX (◎) son la moneda digital del
+        ecosistema UberX. 1 ◎ equivale aproximadamente
+        a $250.000 COP.
+      </div>
+
+    </div>
+
+  </section>
+</body>
+</html>
+
+----------------------------------------------------------------
+PASO 2 — En 02-home.html, enlazar desde el banner
+----------------------------------------------------------------
+
+BUSCA esto:
+  <a href="#">Sobre vuelos espaciales seguros &rsaquo;</a>
+
+REEMPLAZA por:
+  <a href="07-faq.html">Sobre vuelos espaciales seguros &rsaquo;</a>
+
+----------------------------------------------------------------
+PASO 3 — En app.css agregar al final
+----------------------------------------------------------------
+
+#faq {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+.faq-check { display: none; }
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color var(--ease);
+}
+
+.faq-question:hover { color: var(--accent); }
+
+.faq-arrow {
+  font-size: 1.2rem;
+  color: var(--muted);
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.faq-answer {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.6;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+
+.faq-check:checked + .faq-question {
+  color: var(--accent);
+}
+
+.faq-check:checked + .faq-question .faq-arrow {
+  transform: rotate(90deg);
+}
+
+.faq-check:checked + .faq-question + .faq-answer {
+  max-height: 200px;
+  padding: 12px 0 16px;
+}
+
+================================================================
+TÉCNICA CSS USADA:
+  input[type=checkbox] + :checked + selector +
+  La respuesta usa max-height: 0 con overflow: hidden para
+  estar "colapsada". Al marcar el checkbox, CSS cambia
+  max-height a 200px con transición, creando el efecto
+  de expansión suave sin JavaScript.
+
+  La flecha rota 90° con transform: rotate() al abrirse.
+================================================================
